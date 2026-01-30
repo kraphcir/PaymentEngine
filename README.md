@@ -9,6 +9,13 @@ cargo build --release
 cargo run -- transactions.csv > accounts.csv
 ```
 
+Test Cases
+
+```bash
+cargo test
+```
+
+
 ## Transaction Types
 
 | Type | Effect |

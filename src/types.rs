@@ -20,7 +20,9 @@ pub enum TxType {
 pub struct TransactionRecord {
     #[serde(rename = "type")]
     pub tx_type: TxType,
+    #[serde(rename = "client")]
     pub client_id: ClientId,
+    #[serde(rename = "tx")]
     pub tx_id: TxId,
     pub amount: Option<Decimal>,
 }

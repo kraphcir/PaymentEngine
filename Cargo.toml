@@ -7,3 +7,6 @@ edition = "2024"
 serde = { version = "1", features = ["derive"] }
 csv = "1"
 rust_decimal = { version = "1", features = ["serde-str"] }
+
+[dev-dependencies]
+rust_decimal_macros = "1"
