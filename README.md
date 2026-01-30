@@ -59,3 +59,6 @@ Test Cases
 ```bash
 cargo test
 ```
+
+## AI Policy
+I declare that ChatGPT was used during this submission. Willing to explain prompt usage/ generated code bits.
