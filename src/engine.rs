@@ -54,6 +54,10 @@ impl Engine {
             None => return,
         };
 
+        if self.deposits.contains_key(&record.tx_id) {
+            return;
+        }
+
         let account = self.accounts.entry(record.client_id).or_default();
         account.available += amount;
 
@@ -286,6 +290,17 @@ mod tests {
         let acc = get_account(&engine, 1);
         assert_eq!(acc.available, dec!(0));
         assert_eq!(acc.held, dec!(10.0));
+    }
+
+    #[test]
+    fn duplicate_deposit_tx_id_ignored() {
+        let mut engine = Engine::new();
+        engine.process(tx(TxType::Deposit, 1, 1, Some(dec!(10.0))));
+        engine.process(tx(TxType::Deposit, 1, 1, Some(dec!(20.0)))); // duplicate tx_id
+
+        let acc = get_account(&engine, 1);
+        // second deposit should be ignored; balance stays at 10
+        assert_eq!(acc.available, dec!(10.0));
     }
 
     #[test]
