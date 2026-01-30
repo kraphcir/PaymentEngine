@@ -20,7 +20,7 @@ Unit tests for edge cases and conditions are included in `engine.rs`, a few to m
 - **Negative balances** - i.e. Disputing a deposit after withdrawing can result in a negative balance. See lines 311-322 in `engine.rs`
 
 
-### Efficiency - Streaming
+### Efficiency / Streaming
 Transactions are streamed by row using `csv::Reader::deserialize()`. Full input fill is never loaded into memory.
 The current engine is a single threaded engine. With further implementation, we would need async loops to replace the current CSV reader. HashMaps used in `engine.rs` are not thread safe in current implementation, would need to be replaced with concurrent maps.
 
@@ -51,6 +51,8 @@ Malformed CSV rows are logged and skipped. Invalid operations are also logged an
 cargo build --release
 cargo run -- transactions.csv > accounts.csv
 ```
+
+transactions.csv is not included in this project.
 
 Test Cases
 
