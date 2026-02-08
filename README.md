@@ -40,7 +40,7 @@ Malformed CSV rows are logged and skipped. Invalid operations are also logged an
 
 ## Assumptions
 
-- **Only deposits can be disputed.** The instructions state that a dispute decreases available funds and increases held funds. Applying this to a withdrawal would double the withdrawal rather than reversing it, therefore only deposits are disputable.
+- **Only deposits can be disputed.** A dispute decreases available funds and increases held funds. Applying this to a withdrawal would double the withdrawal rather than reversing it, therefore only deposits are disputable.
 - **Locked accounts reject all further transactions.** Once a chargeback freezes an account, nothing else can be processed for this account. Account is locked indefinitely.
 - **Duplicate transaction IDs are rejected.** The instructions state tx IDs are globally unique. If a duplicate tx ID appears, the second occurrence is ignored to prevent state corruption.
 - **Client ID must match on dispute/resolve/chargeback.** A dispute referencing a tx that belongs to a different client is ignored.
